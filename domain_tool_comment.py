@@ -83,11 +83,13 @@ def get_reginfomation(domain_name, domain_name_suffix_infomation):
     # 调用“whois_query” 获得返回
     
     reg = domain_name_suffix_infomation[2]
+#判断有没有返回信息
     if not infomation:
         with open(f'failure.txt','a') as f:
             f.write(f'{domain_name}.{domain_name_suffix_infomation[0]} 查询失败\n')
         print(f'域名{domain_name}.{domain_name_suffix_infomation[0]}查询失败！')
         return
+#判断返回信息包不包含没注册的标志
     if infomation.find(reg) >= 0:
     # Python find() 方法检测字符串中是否包含子字符串 str ，
     #如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，如果包含子字符串返回开始的索引值，否则返回-1
